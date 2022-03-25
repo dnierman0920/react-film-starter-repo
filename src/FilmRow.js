@@ -4,6 +4,15 @@ import Fave from './Fave';
 
 
 class FilmRow extends Component {
+
+    constructor(props){
+        super(props)
+    }
+
+    handleDetailsClick = (e, film) => {
+        console.log('fetching details for: ', e.currentTarget.getElementsByTagName('h1')[0].innerText)
+        console.log('fetching details for: ', film.title)
+    }
   
     render() {
         const urlPrefix = 'https://image.tmdb.org/t/p/w780/'
@@ -11,7 +20,7 @@ class FilmRow extends Component {
 
         return (
             <>
-                <div className="film-row">
+                <div className="film-row" onClick={(e)=>{this.handleDetailsClick(e,this.props.film)}}>
                         <img src={posterUrl} alt="" />
 
                     <div className="film-summary">
