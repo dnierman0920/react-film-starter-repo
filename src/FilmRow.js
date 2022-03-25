@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Fave from './Fave';
+import Poster from './Poster';
 
 
 class FilmRow extends Component {
-
-    constructor(props){
-        super(props)
-    }
 
     handleDetailsClick = (e, film) => {
         console.log('fetching details for: ', e.currentTarget.getElementsByTagName('h1')[0].innerText)
@@ -15,13 +12,11 @@ class FilmRow extends Component {
     }
   
     render() {
-        const urlPrefix = 'https://image.tmdb.org/t/p/w780/'
-        const posterUrl = urlPrefix+this.props.film.poster_path
 
         return (
             <>
                 <div className="film-row" onClick={(e)=>{this.handleDetailsClick(e,this.props.film)}}>
-                        <img src={posterUrl} alt="" />
+                        <Poster film={this.props.film}/>
 
                     <div className="film-summary">
                         <h1>{this.props.film.title}</h1>
