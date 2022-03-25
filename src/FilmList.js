@@ -3,6 +3,16 @@ import './App.css';
 import FilmRow from './FilmRow';
 
 class FilmList extends Component {
+    constructor(props){
+        super(props)
+
+        this.handleFilterClick = this.handleFilterClick.bind(this)
+    }
+
+    handleFilterClick = (filter) =>{
+        console.log('a filter was clicked')
+        console.log('FILTER: ', filter)
+    }
   
     render() {
         const allFilms = this.props.films.map((film, index)=> {
@@ -13,7 +23,17 @@ class FilmList extends Component {
             <>
                 <div className="film-list">
                     <h1 className="section-title">FILMS</h1>
-                    <h1>{allFilms}</h1>
+                    <div className="film-list-filters">
+                        <div onClick={()=>this.handleFilterClick('all')} className="film-list-filter">
+                            ALL
+                            <span className="section-count">{this.props.films.length}</span>
+                        </div>
+                            <div onClick={()=>this.handleFilterClick('faves')} className="film-list-filter">
+                                FAVES
+                                <span className="section-count">0</span>
+                            </div>
+                    </div>
+                    {allFilms}
                 </div>
             </>
         );
