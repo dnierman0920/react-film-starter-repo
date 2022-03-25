@@ -7,11 +7,20 @@ class FilmList extends Component {
         super(props)
 
         this.handleFilterClick = this.handleFilterClick.bind(this)
+
+        this.state = {
+            filter:'all'
+        }
     }
+
 
     handleFilterClick = (filter) =>{
         console.log('a filter was clicked')
         console.log('FILTER: ', filter)
+        this.setState({
+            filter:filter
+        })
+     
     }
   
     render() {
